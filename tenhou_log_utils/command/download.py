@@ -7,11 +7,12 @@ import logging
 import requests
 
 _ARCHIVE_URL = 'http://tenhou.net/0/log/?'
+_HEADERS={"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"}
 _LG = logging.getLogger(__name__)
 
 
-def _download(url):
-    resp = requests.get(url)
+def _download(url, headers=_HEADERS):
+    resp = requests.get(url, headers=headers)
     resp.raise_for_status()
     return resp.content
 
